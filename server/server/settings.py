@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
-import django_heroku
+import django_on_heroku
 import environ
 
 
@@ -144,4 +144,4 @@ CORS_ORIGIN_WHITELIST = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 #Activate Django-Heroku.
-django_heroku.settings(locals())
+django_on_heroku.settings(locals())
