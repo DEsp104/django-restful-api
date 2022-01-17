@@ -400,5 +400,4 @@ module.exports = {
     wordBreak: ["responsive"],
     zIndex: ["responsive"],
   },
-  plugins: [require("@tailwindcss/forms")],
 };
