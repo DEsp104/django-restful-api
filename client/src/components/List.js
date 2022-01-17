@@ -19,7 +19,7 @@ function List() {
   // const editStatus = useSelector((state) => state.editItem.status);
 
 
-  // const items = useSelector((state) => state?.getItems?.items);
+  const items = useSelector((state) => state?.getItems?.items);
 
   
   const addItem = (e) => {
@@ -31,17 +31,16 @@ function List() {
     setTaskField("");
   }
 
-  console.log(newItemStatus)
 
-  // const showItems = () => {
-  //   return items?.map((item, index) => {
-  //     return <Item {...item} key={index} />
-  //   })
-  // }
+  const showItems = () => {
+    return items?.map((item, index) => {
+      return <Item {...item} key={index} />
+    })
+  }
 
-  //  useEffect(() => {
-  //   dispatch(fetchItems());
-  //  }, [])
+   useEffect(() => {
+    dispatch(fetchItems());
+   }, [])
   
   //  useEffect(() => {
   //   dispatch(fetchItems());
@@ -124,7 +123,7 @@ function List() {
           </div>
         </form>
         <div className="w-full">
-          {/* {showItems()} */}
+          {showItems()}
         </div>
       </div>
     </div>

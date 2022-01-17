@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import getItemReducer from "./itemsSlice";
+import getItemReducer from "./getItemsSlice";
 import addItemReducer from "./addItemSlice";
 // import deleteItemReducer from "./deleteItemSlice";
 // import editItemReducer from "./editItemSlice";
@@ -8,7 +8,7 @@ import addItemReducer from "./addItemSlice";
 
 export default configureStore({
   reducer: {
-    // getItems: getItemReducer,
+    getItems: getItemReducer,
     addItem: addItemReducer,
     // deleteItem: deleteItemReducer,
     // editItem: editItemReducer,
