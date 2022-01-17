@@ -6,14 +6,15 @@ import { updateCurrentItem } from "../redux/editItemSlice";
 function Edit(props) {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
-  const [taskField, setTaskField] = useState(props.task);
-  const [categoryField, setCategoryField] = useState(props.category);
-  const id = props._id
+  const [taskField, setTaskField] = useState(props.description);
+  const [categoryField, setCategoryField] = useState(props.title);
+  const [completeField, setCompleteField] = useState(props.completed);
+  const id = props.id
 
   const update = (e) => {
     e.preventDefault();
 
-    dispatch(updateCurrentItem({ taskField, categoryField, id }))
+    dispatch(updateCurrentItem({ taskField, categoryField, completeField, id }))
   }
 
 
@@ -93,6 +94,33 @@ function Edit(props) {
                                 ></textarea>
                     </div>
 
+                    <div className="mt-4">
+              <span className="text-gray-700">Completed</span>
+              <div className="mt-2">
+                <label className="inline-flex items-center">
+                  <input
+                    type="radio"
+                    className="form-radio"
+                    name="completedTask"
+                    value={true}
+                    onChange={() => setCompleteField(true)}
+                    checked={completeField ? true : false}
+                  />
+                  <span className="ml-2">Yes</span>
+                </label>
+                <label className="inline-flex items-center ml-6">
+                  <input
+                    type="radio"
+                    className="form-radio"
+                    name="completedTask"
+                    value={false}
+                    onChange={() => setCompleteField(false)}
+                    checked={completeField === false ? true : false}
+                  />
+                  <span className="ml-2">No</span>
+                </label>
+            </div>
+            </div>
                 </div>
                   
                 {/*footer*/}

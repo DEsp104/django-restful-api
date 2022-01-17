@@ -6,10 +6,8 @@ import { addItem } from "../services/addNewItem";
 export const createNewItem = createAsyncThunk(
   "newItem/createNewItem",
   async ({ categoryField, taskField, completeField }) => {
-    console.log(categoryField, taskField, completeField)
     const data = addItem({ categoryField, taskField, completeField })
     
-
     return data;
   }
 );

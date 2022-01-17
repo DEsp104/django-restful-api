@@ -12,11 +12,11 @@ function List() {
   const dispatch = useDispatch();
   const [taskField, setTaskField] = useState("");
   const [categoryField, setCategoryField] = useState("");
-  const [completeField, setCompleteField] = useState(false);
+  const [completeField, setCompleteField] = useState("");
   
   const newItemStatus = useSelector((state) => state.addItem.status)
-  // const deleteItemstatus = useSelector((state) => state.deleteItem.status);
-  // const editStatus = useSelector((state) => state.editItem.status);
+  const deleteItemstatus = useSelector((state) => state.deleteItem.status);
+  const editStatus = useSelector((state) => state.editItem.status);
 
 
   const items = useSelector((state) => state?.getItems?.items);
@@ -42,21 +42,23 @@ function List() {
     dispatch(fetchItems());
    }, [])
   
-  //  useEffect(() => {
-  //   dispatch(fetchItems());
-  //  }, [newItemStatus])
+  useEffect(() => {
+     
+    dispatch(fetchItems());
+    setCompleteField("")
+   }, [newItemStatus])
   
-  //  useEffect(() => {
-  //   dispatch(fetchItems());
-  //  }, [deleteItemstatus])
+   useEffect(() => {
+    dispatch(fetchItems());
+   }, [deleteItemstatus])
 
-  //  useEffect(() => {
-  //   dispatch(fetchItems());
-  //  }, [editStatus])
+   useEffect(() => {
+    dispatch(fetchItems());
+   }, [editStatus])
 
   
   return (
-    <div className="h-100 w-full  items-center justify-center font-sans">
+    <div className="h-100 w-full font-sans">
       <div className="flex flex-col justify-center items-center bg-white-500 rounded shadow w-full mt-6">
         
         <form className="mb-4" action="#" method="POST">
@@ -99,8 +101,9 @@ function List() {
                     type="radio"
                     className="form-radio"
                     name="completedTask"
-                    value={true}
+                    // value={true}
                     onChange={() => setCompleteField(true)}
+                    checked={completeField ? true : false}
                   />
                   <span className="ml-2">Yes</span>
                 </label>
@@ -109,8 +112,9 @@ function List() {
                     type="radio"
                     className="form-radio"
                     name="completedTask"
-                    value={false}
+                    // value={false}
                     onChange={() => setCompleteField(false)}
+                    checked={completeField === false ? true : false}
                   />
                   <span className="ml-2">No</span>
                 </label>
@@ -122,7 +126,7 @@ function List() {
             >Add</button>
           </div>
         </form>
-        <div className="w-full">
+        <div className="w-full lg:w-3/6">
           {showItems()}
         </div>
       </div>
