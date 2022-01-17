@@ -31,6 +31,8 @@ function List() {
     setTaskField("");
   }
 
+  console.log(newItemStatus)
+
   // const showItems = () => {
   //   return items?.map((item, index) => {
   //     return <Item {...item} key={index} />
@@ -81,7 +83,7 @@ function List() {
                         <option value="Meeting">Meeting</option>
                       </select>
                     </div>  
-                  </div>
+            </div>
             
             <div className="mt-1">
               <textarea id="instruction" name="instruction" placeholder="Add Todo" rows="3" cols="40" className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -89,7 +91,32 @@ function List() {
                 }
                 value={taskField}
                         ></textarea>
-                    </div>
+            </div>
+            <div className="mt-4">
+              <span className="text-gray-700">Completed</span>
+              <div className="mt-2">
+                <label className="inline-flex items-center">
+                  <input
+                    type="radio"
+                    className="form-radio"
+                    name="completedTask"
+                    value={true}
+                    onChange={() => setCompleteField(true)}
+                  />
+                  <span className="ml-2">Yes</span>
+                </label>
+                <label className="inline-flex items-center ml-6">
+                  <input
+                    type="radio"
+                    className="form-radio"
+                    name="completedTask"
+                    value={false}
+                    onChange={() => setCompleteField(false)}
+                  />
+                  <span className="ml-2">No</span>
+                </label>
+            </div>
+            </div>
             <button
               className="flex-no-shrink mt-2 p-2 border-2 rounded text-teal-500 border-teal-500 hover:text-white-500 hover:bg-teal-500"
               onClick={ addItem }
